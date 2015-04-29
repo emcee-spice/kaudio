@@ -270,15 +270,15 @@ class Overdriver(Effect):
         right[i] = numpy.sign(r) * min(self.cutoff, abs(r * self.gain))
 
 class Oscillator(Effect):
-    def __init__(self, freq, gain):
+    def __init__(self, freq, amplitude):
         assert freq > 0
         self.freq = freq
-        self.gain = gain
+        self.amplitude = amplitude
         self._ix_frame = 0
     def apply_to_samples(self, i, left, right, frame_rate):
         frames_per_cycle = frame_rate / self.freq
         d = self._ix_frame / float(frames_per_cycle)
-        a = self.gain ** math.sin(2 * math.pi * d)
+        a = self.amplitude ** math.sin(2 * math.pi * d)
         left[i] *= a
         right[i] *= a
         self._ix_frame += 1
