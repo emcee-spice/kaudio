@@ -34,9 +34,6 @@ def set_chunk_size(val):
     global chunk_size
     chunk_size = val
 
-def todo():
-    raise Exception('not yet implemented')
-
 class LibraryError(Exception):
     pass
 
