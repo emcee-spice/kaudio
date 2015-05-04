@@ -16,12 +16,12 @@ import threading
 import time
 
 pa = None
-chunk_size = 512
+chunk_size = 256
 
 def init():
     global pa
-    assert pa is None
-    pa = pyaudio.PyAudio()
+    if pa is None:
+        pa = pyaudio.PyAudio()
 
 def terminate():
     global pa
